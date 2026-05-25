@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>CoinW · 聪明钱跟单 · 领取$100 USDT跟单补贴</title>
+    <meta name="description" content="CoinW 聪明钱跟单雷达，追踪链上高价值钱包与交易员表现。新用户专享$100 USDT跟单补贴，一键跟单巨鲸策略。">
+    <link rel="preload" href="https://cdn.yumltd.com/exp/fonts/Satoshi-Black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://cdn.yumltd.com/exp/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://cdn.yumltd.com/exp/fonts/Satoshi-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://cdn.yumltd.com/exp/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://cdn.yumltd.com/exp/fonts/Satoshi-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #FFFFFF;
+            color: #14171F;
+            line-height: 1.5;
+            overflow-x: hidden;
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('https://cdn.yumltd.com/exp/fonts/Satoshi-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('https://cdn.yumltd.com/exp/fonts/Satoshi-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('https://cdn.yumltd.com/exp/fonts/Satoshi-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('https://cdn.yumltd.com/exp/fonts/Satoshi-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-display: swap;
+        }
+        
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 44px;
+        }
+        
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 32px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo img { height: 32px; width: auto; }
+        .header-actions { display: flex; align-items: center; gap: 16px; }
+        .header-note { color: #5E6673; font-size: 13px; font-weight: 600; }
+        .language-switch { display: flex; align-items: center; gap: 8px; color: #5E6673; font-size: 13px; font-weight: 800; }
+        .language-switch select {
+            min-width: 108px;
+            border: 1px solid #EAECEF;
+            border-radius: 999px;
+            background: white;
+            padding: 9px 30px 9px 14px;
+            font-weight: 800;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235E6673' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+        
+        .hero-section {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) 400px;
+            align-items: center;
+            gap: 48px;
+            padding: 20px 0 50px;
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(94, 36, 255, 0.08);
+            color: #5E24FF;
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .hero-text h1 {
+            max-width: 720px;
+            margin-bottom: 20px;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+        }
+        .hero-line-1 { display: block; font-size: 48px; font-weight: 700; color: #0A0A0C; margin-bottom: 8px; }
+        .hero-line-2 { display: block; font-size: 72px; font-weight: 900; background: linear-gradient(135deg, #5E24FF 0%, #8B5CF6 100%); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 10px; }
+        .hero-line-3 { display: block; font-size: 42px; font-weight: 800; color: #0A0A0C; position: relative; display: inline-block; }
+        .hero-line-3::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 3px; background: linear-gradient(135deg, #5E24FF 0%, #8B5CF6 100%); border-radius: 3px; }
+        
+        .hero-typewriter { margin-bottom: 28px; }
+        .typewriter-wrapper {
+            background: rgba(94, 36, 255, 0.06);
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #5E6673;
+            border-left: 3px solid #5E24FF;
+            width: 100%;
+        }
+        .typewriter-label { color: #5E24FF; font-weight: 700; }
+        .typewriter-text { color: #14171F; font-family: monospace; font-weight: 600; min-width: 240px; }
+        .typewriter-addr { color: #5E24FF; }
+        .typewriter-pnl { color: #03A66D; font-weight: 800; }
+        .typewriter-cursor { display: inline-block; width: 2px; height: 20px; background-color: #5E24FF; margin-left: 2px; animation: blink 1s step-end infinite; vertical-align: middle; }
+        @keyframes blink { 0%,100%{ opacity: 1; } 50%{ opacity: 0; } }
+        
+        .hero-actions { display: flex; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+        .primary-link, .secondary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 0 24px;
+            border-radius: 40px;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: 0.2s;
+        }
+        .primary-link { background: #5E24FF; color: white; box-shadow: 0 8px 20px rgba(94, 36, 255, 0.2); }
+        .primary-link:hover { background: #4A1DCC; transform: translateY(-2px); }
+        .secondary-link { color: #5E24FF; border: 1px solid rgba(94, 36, 255, 0.2); background: white; }
+        .secondary-link:hover { border-color: #5E24FF; background: rgba(94, 36, 255, 0.05); }
+        
+        .data-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 660px; }
+        .stat-item { padding: 18px; border: 1px solid #EAECEF; border-radius: 20px; background: rgba(255,255,255,0.9); transition: 0.2s; }
+        .stat-item span:first-child { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; color: #5E6673; }
+        .val-animate { display: block; font-weight: 900; font-size: 28px; color: #5E24FF; letter-spacing: -0.3px; }
+        
+        .floating-reg-card {
+            background: white;
+            padding: 32px;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border: 1px solid #EAECEF;
+        }
+        .floating-reg-card h2 { font-size: 26px; margin-bottom: 6px; font-weight: 900; text-align: center; }
+        .card-subtitle { text-align: center; font-size: 13px; color: #5E6673; margin-bottom: 20px; }
+        .reward-banner {
+            background: linear-gradient(135deg, #FFF8E7 0%, #FFE6B3 100%);
+            border: 1px solid #FFD966;
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: #B7791F;
+        }
+        .reward-banner i { margin-right: 8px; color: #F5A623; }
+        .reward-banner strong { color: #D97706; font-size: 18px; }
+        .input-group { margin-bottom: 14px; }
+        .input-group label { display: block; margin-bottom: 7px; color: #14171F; font-size: 13px; font-weight: 800; }
+        .input-field { position: relative; }
+        .input-field i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #B7BDC6; }
+        .input-field input { width: 100%; padding: 15px 16px 15px 46px; border-radius: 14px; border: 1px solid #EAECEF; outline: none; background: #F8F9FA; font-size: 15px; transition: 0.2s; }
+        .input-field input:focus { border-color: #5E24FF; background: white; box-shadow: 0 0 0 3px rgba(94,36,255,0.1); }
+        .terms-row { display: flex; align-items: flex-start; gap: 9px; margin: 8px 0 18px; color: #5E6673; font-size: 12px; }
+        .reg-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #5E24FF, #8B5CF6);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 60px;
+            font-weight: 900;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 18px rgba(94,36,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes btnNeonBlink {
+            0% { background: linear-gradient(135deg, #5E24FF, #8B5CF6); box-shadow: 0 0 0 0 rgba(94,36,255,0.5); transform: scale(1);}
+            25% { background: linear-gradient(135deg, #8B5CF6, #A78BFA); box-shadow: 0 0 0 8px rgba(94,36,255,0.4), 0 0 0 16px rgba(139,92,246,0.2); transform: scale(1.02);}
+            50% { background: linear-gradient(135deg, #7C3AED, #9F7AEA); box-shadow: 0 0 0 4px rgba(139,92,246,0.6), 0 0 0 12px rgba(94,36,255,0.3); transform: scale(1.01);}
+            75% { background: linear-gradient(135deg, #6D28D9, #8B5CF6); box-shadow: 0 0 0 10px rgba(94,36,255,0.5), 0 0 0 20px rgba(139,92,246,0.25); transform: scale(1.02);}
+            100% { background: linear-gradient(135deg, #5E24FF, #8B5CF6); box-shadow: 0 0 0 0 rgba(94,36,255,0); transform: scale(1);}
+        }
+        .reg-btn.btn-blink { animation: btnNeonBlink 0.8s ease-in-out 2; }
+        .reg-btn:active { transform: scale(0.97); }
+        .proof-line { text-align: center; font-size: 12px; color: #5E6673; margin-top: 14px; }
+        .form-message { min-height: 20px; margin-top: 10px; text-align: center; font-size: 12px; }
+        
+        .section-title { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 24px; flex-wrap: wrap; }
+        .section-title h2 { font-weight: 900; font-size: 32px; color: #14171F; letter-spacing: -0.5px; }
+        .trader-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
+        .trader-card { background: white; border-radius: 24px; border: 1px solid #EAECEF; overflow: hidden; transition: 0.25s; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+        .trader-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); border-color: rgba(94,36,255,0.2); }
+        .card-header { padding: 20px 20px 12px; border-bottom: 1px solid #EAECEF; }
+        .card-name-section { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .card-name { font-size: 18px; font-weight: 800; }
+        .card-badge { background: rgba(94,36,255,0.1); color: #5E24FF; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; }
+        .card-status { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; font-size: 13px; color: #5E6673; }
+        .card-desc { font-size: 12px; color: #5E6673; background: #F8F9FA; padding: 8px 12px; border-radius: 12px; margin-top: 8px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px 20px; background: #F8F9FA; }
+        .stat-cell { text-align: center; }
+        .stat-label { font-size: 10px; color: #5E6673; margin-bottom: 4px; font-weight: 600; }
+        .stat-value { font-size: 16px; font-weight: 800; color: #03A66D; }
+        .card-actions { display: flex; gap: 12px; padding: 16px 20px 20px; }
+        .btn-subscribe { flex: 1; background: #5E24FF; color: white; border: none; padding: 10px; border-radius: 40px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        .btn-copy { flex: 1; background: transparent; border: 1px solid #EAECEF; color: #14171F; padding: 10px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-copy:hover { border-color: #5E24FF; color: #5E24FF; background: rgba(94,36,255,0.05); }
+        
+        .compare-stack { margin: 40px 0 48px; }
+        .compare-card-row { background: white; border-radius: 24px; border: 1px solid #EAECEF; overflow: hidden; margin-bottom: 20px; transition: 0.2s; }
+        .compare-split { display: flex; width: 100%; }
+        .compare-left { flex: 1; background: linear-gradient(135deg, #FFFFFF 0%, rgba(94,36,255,0.03) 100%); padding: 24px 28px; border-right: 1px solid #EAECEF; }
+        .compare-right { flex: 1; background: #FCFCFD; padding: 24px 28px; }
+        .compare-left-badge, .compare-right-badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 5px 14px; border-radius: 30px; margin-bottom: 16px; }
+        .compare-left-badge { background: #5E24FF; color: white; }
+        .compare-right-badge { background: #EEF0F4; color: #5E6673; }
+        .compare-left h3, .compare-right h3 { font-size: 20px; margin-bottom: 12px; }
+        .compare-left-desc, .compare-right-desc { font-size: 14px; margin-bottom: 8px; line-height: 1.4; font-weight: 500; }
+        .compare-left-detail, .compare-right-detail { font-size: 12px; color: #7A7F8A; }
+        
+        /* 新增滚动Logo区域 */
+        .rolling-logos {
+            margin: 60px 0 40px;
+            overflow: hidden;
+            background: #F8F9FC;
+            border-radius: 40px;
+            padding: 24px 0;
+            border: 1px solid #EAECEF;
+        }
+        .rolling-logos-title {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #5E6673;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: scrollLogos 30s linear infinite;
+        }
+        .logo-track img {
+            height: 40px;
+            margin: 0 32px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            filter: grayscale(0%);
+        }
+        .logo-track img:hover { opacity: 1; }
+        @keyframes scrollLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .bottom-cta-section {
+            background: linear-gradient(135deg, #F8F9FC 0%, #FFFFFF 100%);
+            border-radius: 32px;
+            padding: 48px 40px;
+            margin: 48px 0 24px;
+            text-align: center;
+            border: 1px solid #EAECEF;
+        }
+        .cta-quote { font-size: 34px; font-weight: 800; line-height: 1.3; margin-bottom: 20px; color: #0A0A0C; }
+        .cta-quote-highlight { background: linear-gradient(135deg, #5E24FF 0%, #8B5CF6 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .cta-subtext { font-size: 16px; color: #5E6673; margin-bottom: 28px; max-width: 550px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+        .cta-btn-primary, .cta-btn-secondary { padding: 14px 32px; border-radius: 50px; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+        .cta-btn-primary { background: #5E24FF; color: white; box-shadow: 0 8px 20px rgba(94,36,255,0.2); }
+        .cta-btn-primary:hover { background: #4A1DCC; transform: translateY(-2px); }
+        .cta-btn-secondary { background: transparent; border: 1px solid #EAECEF; color: #14171F; }
+        .cta-btn-secondary:hover { border-color: #5E24FF; color: #5E24FF; background: rgba(94,36,255,0.05); }
+        .welcome-bonus {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #FFF8E7, #FFE6B3);
+            border: 2px solid #F5A623;
+            border-radius: 60px;
+            padding: 12px 28px;
+            box-shadow: 0 8px 20px rgba(245,166,35,0.25);
+            animation: pulseGold 2s infinite;
+        }
+        .welcome-bonus i { font-size: 24px; color: #F5A623; }
+        .welcome-bonus-text { font-size: 18px; font-weight: 800; color: #B7791F; }
+        .welcome-bonus-text strong { font-size: 24px; font-weight: 900; color: #D97706; margin: 0 4px; }
+        @keyframes pulseGold {
+            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(245,166,35,0.25); }
+            50% { transform: scale(1.02); box-shadow: 0 12px 28px rgba(245,166,35,0.4); }
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(245,166,35,0.25); }
+        }
+        
+        .site-footer-simple {
+            text-align: center;
+            padding: 24px 0 12px;
+            color: #5E6673;
+            font-size: 12px;
+            border-top: 1px solid #EAECEF;
+            margin-top: 16px;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container {
+            background: white;
+            border-radius: 32px;
+            max-width: 480px;
+            width: 90%;
+            padding: 28px 28px 32px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-icon { width: 60px; height: 60px; background: rgba(94,36,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .modal-icon i { font-size: 28px; color: #5E24FF; }
+        .modal-container h3 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+        .modal-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .modal-btn-primary, .modal-btn-secondary { padding: 12px; border-radius: 40px; font-weight: 800; cursor: pointer; text-decoration: none; display: block; text-align: center; }
+        .modal-btn-primary { background: #5E24FF; color: white; border: none; }
+        .modal-btn-secondary { background: transparent; border: 1px solid #EAECEF; color: #5E6673; }
+        .close-modal { position: absolute; top: 20px; right: 24px; font-size: 24px; cursor: pointer; color: #9CA3AF; transition: 0.2s; background: none; border: none; }
+        .close-modal:hover { color: #5E24FF; }
+        .tutorial-step { display: flex; gap: 16px; text-align: left; margin-bottom: 24px; align-items: flex-start; }
+        .step-number { width: 36px; height: 36px; background: rgba(94,36,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #5E24FF; flex-shrink: 0; }
+        .step-content h4 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+        .step-content p { font-size: 13px; color: #5E6673; line-height: 1.4; }
+        .tutorial-note { background: #F8F9FA; border-radius: 16px; padding: 14px; margin-top: 8px; font-size: 12px; color: #5E6673; text-align: left; }
+        
+        @media (max-width: 980px) {
+            .hero-section { grid-template-columns: 1fr; gap: 36px; }
+            .trader-cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .compare-split { flex-direction: column; }
+            .compare-left { border-right: none; border-bottom: 1px solid #EAECEF; padding: 20px; }
+            .compare-right { padding: 20px; }
+            .cta-quote { font-size: 28px; }
+            .rolling-logos { margin: 40px 0; }
+            .logo-track img { height: 30px; margin: 0 20px; }
+        }
+        @media (max-width: 720px) {
+            .main-wrapper { padding: 14px 16px 32px; }
+            .site-header { flex-direction: column; align-items: flex-start; }
+            .hero-line-1 { font-size: 28px; }
+            .hero-line-2 { font-size: 44px; }
+            .hero-line-3 { font-size: 28px; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .primary-link, .secondary-link { justify-content: center; width: 100%; }
+            .data-stats { gap: 10px; }
+            .stat-item { padding: 12px; text-align: center; }
+            .val-animate { font-size: 20px; }
+            .trader-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+            .section-title h2 { font-size: 26px; }
+            .cta-quote { font-size: 22px; }
+            .bottom-cta-section { padding: 28px 20px; }
+            .welcome-bonus { padding: 8px 20px; }
+            .welcome-bonus-text { font-size: 14px; }
+            .welcome-bonus-text strong { font-size: 18px; }
+            .typewriter-wrapper { font-size: 13px; }
+            .typewriter-text { min-width: 180px; font-size: 12px; }
+            .rolling-logos { padding: 16px 0; }
+            .logo-track img { height: 24px; margin: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="main-wrapper">
+    <header class="site-header">
+        <div class="logo"><img src="https://cdn.yumltd.com/static/_followup/_nuxt/cw-logo-light.BGAdSA2R.svg" alt="CoinW" width="126" height="32"></div>
+        <div class="header-actions">
+            <div class="header-note">链上钱包追踪 · 一键跟单</div>
+            <div class="language-switch">
+                <i class="fas fa-globe"></i>
+                <select id="langSelect">
+                    <option value="zh-CN">简中</option><option value="en">English</option><option value="zh-TW">繁中</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-text">
+            <div class="eyebrow"><i class="fas fa-wave-square"></i> 聪明钱实时雷达</div>
+            <h1><span class="hero-line-1">跟巨鲸，</span><span class="hero-line-2">一键赚！</span><span class="hero-line-3">别再错过</span></h1>
+            <div class="hero-typewriter"><div class="typewriter-wrapper"><span class="typewriter-label">巨鲸钱包收益：</span><span class="typewriter-text" id="typewriterText"></span><span class="typewriter-cursor"></span></div></div>
+            <div class="hero-actions"><a class="primary-link" href="#register"><i class="fas fa-user-plus"></i> 开启跟单</a><a class="secondary-link tutorial-trigger" href="javascript:void(0);" id="tutorialBtn"><i class="fas fa-play-circle"></i> 查看新手教程</a></div>
+            <div class="data-stats"><div class="stat-item"><span>跟单人数</span><strong id="people-count" class="val-animate">102,998</strong></div><div class="stat-item"><span>跟单收益</span><strong id="profit-count" class="val-animate">$89.2M</strong></div></div>
+        </div>
+        <form class="floating-reg-card" id="register" novalidate>
+            <h2>开启聪明钱跟单</h2>
+            <div class="reward-banner"><i class="fas fa-gift"></i> 新用户专享：最高 <strong>$100 USDT</strong> 跟单补贴</div>
+            <p class="card-subtitle">一键跟单，轻松把握盈利机会</p>
+            <div class="input-group"><label>邮箱地址</label><div class="input-field"><i class="fas fa-envelope"></i><input id="email" type="email" placeholder="name@example.com" required></div></div>
+            <div class="input-group"><label>设置密码</label><div class="input-field"><i class="fas fa-lock"></i><input id="password" type="password" minlength="8" placeholder="至少 8 位字符" required></div></div>
+            <label class="terms-row"><input id="terms" type="checkbox" required> <span>我同意服务协议与隐私政策。</span></label>
+            <button class="reg-btn" type="submit" id="regBtn">立即注册</button>
+            <p class="proof-line"><i class="fas fa-check-circle"></i> 100% 准备金 · 自定义止盈止损</p>
+            <div class="form-message" id="formMsg"></div>
+        </form>
+    </section>
+
+    <section id="smart-money-radar">
+        <div class="section-title"><h2>热门聪明钱策略</h2><p>按近90天收益、胜率、盈亏比综合排序</p></div>
+        <div class="radar-meta" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:12px; color:#5E6673;"><span>数据来源：链上公开地址 · 近90天已实现PnL</span><span>最近更新：<strong id="last-updated">--:--:--</strong></span></div>
+        <div class="trader-cards-grid" id="traderCards"></div>
+    </section>
+
+    <div class="compare-stack"><div class="section-title"><h2>⚡ 为什么选择CoinW聪明钱跟单？</h2><p>每一处细节，都更胜一筹</p></div>
+        <div class="compare-card-row"><div class="compare-split"><div class="compare-left"><div class="compare-left-badge">CoinW聪明钱跟单</div><h3>🐋 链上巨鲸实时追踪</h3><div class="compare-left-desc">覆盖链上真实巨鲸、机构钱包和高胜率地址</div><div class="compare-left-detail">数据源更广 · 更透明 · 实时同步</div></div><div class="compare-right"><div class="compare-right-badge">其他交易所跟单</div><h3>📉 数据范围有限</h3><div class="compare-right-desc">多限于平台内注册交易员</div><div class="compare-right-detail">缺少链上真实数据 · 信息不对称严重</div></div></div></div>
+        <div class="compare-card-row"><div class="compare-split"><div class="compare-left"><div class="compare-left-badge">CoinW聪明钱跟单</div><h3>📊 多维度策略筛选</h3><div class="compare-left-desc">收益、胜率、回撤、活跃度、盈亏比等多维指标</div><div class="compare-left-detail">精准识别优质策略 · 降低风险</div></div><div class="compare-right"><div class="compare-right-badge">其他交易所跟单</div><h3>🔍 筛选依据单一</h3><div class="compare-right-desc">通常只看收益率和胜率</div><div class="compare-right-detail">容易忽略回撤风险 · 仓位波动 · 稳定性</div></div></div></div>
+        <div class="compare-card-row"><div class="compare-split"><div class="compare-left"><div class="compare-left-badge">CoinW聪明钱跟单</div><h3>💰 0分润 · 透明跟单</h3><div class="compare-left-desc">不抽取任何盈利分成，自主设置跟单参数</div><div class="compare-left-detail">100%准备金保障 · 收益全归你</div></div><div class="compare-right"><div class="compare-right-badge">其他交易所跟单</div><h3>💸 存在分润成本</h3><div class="compare-right-desc">大部分策略需要分润（10%-30%）</div><div class="compare-right-detail">长期跟单成本更高 · 侵蚀收益</div></div></div></div>
+    </div>
+
+    <!-- 新增滚动Logo区块（行业认可） -->
+    <div class="rolling-logos">
+        <div class="rolling-logos-title"><i class="fas fa-certificate" style="margin-right: 6px;"></i> 全球信赖 · 行业认可</div>
+        <div class="logo-track">
+            <!-- 使用官网已有的图片资源或公开图片 -->
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/CoinMarketCap.BANvl0cQ.png" alt="CoinMarketCap" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/Coingecko.L1WWmeJN.png" alt="CoinGecko" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/Coinweb.7oWux7oG.png" alt="Coinweb" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/MyToken.DvhauWk8.png" alt="MyToken" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/AiCoin.BI1_Ucha.png" alt="AiCoin" loading="lazy">
+            <!-- 重复一组以达到无缝滚动效果 -->
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/CoinMarketCap.BANvl0cQ.png" alt="CoinMarketCap" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/Coingecko.L1WWmeJN.png" alt="CoinGecko" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/Coinweb.7oWux7oG.png" alt="Coinweb" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/MyToken.DvhauWk8.png" alt="MyToken" loading="lazy">
+            <img src="https://cdn.yumltd.com/static/_home/_nuxt/AiCoin.BI1_Ucha.png" alt="AiCoin" loading="lazy">
+        </div>
+    </div>
+
+    <div class="bottom-cta-section"><div class="cta-quote"><span>巨鲸不会等你看懂，</span><br><span>但 <span class="cta-quote-highlight">CoinW 让你跟得上</span>。</span></div><div class="cta-subtext">从今天起，告别"猜大小"式的交易。<br>用数据 + 自动化，让你的钱去和聪明的钱一起工作。</div><div class="cta-buttons"><a href="#register" class="cta-btn-primary"><i class="fas fa-rocket"></i> 立即跟单聪明钱</a><button class="cta-btn-secondary tutorial-trigger" id="bottomTutorialBtn"><i class="fas fa-play-circle"></i> 查看新手教程</button></div><div class="welcome-bonus"><i class="fas fa-gift"></i><span class="welcome-bonus-text"><strong>$100 USDT</strong> 跟单补贴</span></div></div>
+    <div class="site-footer-simple"><span>© 2013-2026 CoinW. All rights reserved.</span> | <a href="#">服务协议</a> <a href="#">隐私政策</a></div>
+</div>
+
+<!-- 跟单提示模态框 -->
+<div id="followModal" class="modal-overlay"><div class="modal-container"><button class="close-modal" id="closeFollowModal">&times;</button><div class="modal-icon"><i class="fas fa-chart-line"></i></div><h3>开启跟单之旅</h3><p>注册后即可跟随该交易员的策略，实时复制交易信号</p><div class="reward-highlight" style="background:#FFF8E7; border-radius:12px; padding:10px; margin:12px 0;"><i class="fas fa-gift"></i> 新用户专享：最高 <strong>$100 USDT</strong> 跟单补贴</div><div class="modal-buttons"><a href="#register" class="modal-btn-primary" id="modalRegBtn">立即注册</a><button class="modal-btn-secondary" id="modalCloseBtn">稍后再说</button></div></div></div>
+
+<!-- 新手教程独立模态框 -->
+<div id="tutorialModal" class="modal-overlay"><div class="modal-container"><button class="close-modal" id="closeTutorialModal">&times;</button><div class="modal-icon"><i class="fas fa-graduation-cap"></i></div><h3>新手跟单教程</h3><p style="font-size:14px; color:#5E6673; margin-bottom:20px;">三步轻松上手，跟着聪明钱一起盈利</p>
+    <div class="tutorial-step"><div class="step-number">1</div><div class="step-content"><h4>注册账户，领取跟单补贴</h4><p>填写邮箱、设置密码，即可获得最高 $100 USDT 跟单补贴。</p></div></div>
+    <div class="tutorial-step"><div class="step-number">2</div><div class="step-content"><h4>选择「聪明钱」策略</h4><p>在雷达页面查看巨鲸/交易员的收益、胜率、盈亏比，挑选你认可的策略。</p></div></div>
+    <div class="tutorial-step"><div class="step-number">3</div><div class="step-content"><h4>一键跟单 & 设置参数</h4><p>点击“立即跟单”，自定义跟单金额、止盈止损比例，系统自动同步交易信号。</p></div></div>
+    <div class="tutorial-note"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i> 提示：跟单资金完全由你控制，随时可停止或修改参数，平台不抽取任何盈利分成。</div>
+    <div class="modal-buttons"><a href="#register" class="modal-btn-primary" id="tutorialRegisterBtn">立即注册，领取补贴</a><button class="modal-btn-secondary" id="tutorialLaterBtn">稍后了解</button></div>
+</div></div>
+
+<script>
+    let peopleCount = 102998, profitVal = 89.2;
+    const whaleData = [{ addr:"0xa5B0eDF6B55128E0DdaE8e51aC538c3188401D41", pnl:35.4, short:"0xa5B0...D41"},{ addr:"0xa312114b5795dff9b8db50474dd57701aa78ad1e", pnl:5.0, short:"0xa312...d1e"},{ addr:"0x45d26f28196d226497130c4bac709d808fed4029", pnl:8.35, short:"0x45d2...029"}];
+    let msgIdx=0, charIdx=0, isDel=false, curText="", typeEl=null;
+    function formatMsg(w){ return `<span class="typewriter-addr">${w.short}</span>  <span class="typewriter-pnl">+$${w.pnl}M</span>`; }
+    function typeEffect(){
+        if(!typeEl) { typeEl=document.getElementById("typewriterText"); if(!typeEl) return; }
+        const target = whaleData[msgIdx];
+        const targetRaw = `${target.short}  +$${target.pnl}M`;
+        if(isDel){
+            if(charIdx>0){ charIdx--; curText = targetRaw.substring(0,charIdx); typeEl.innerHTML = curText; setTimeout(typeEffect,35); }
+            else { isDel=false; msgIdx=(msgIdx+1)%whaleData.length; setTimeout(typeEffect,180); }
+        } else {
+            if(charIdx<targetRaw.length){ charIdx++; curText=targetRaw.substring(0,charIdx); typeEl.innerHTML=curText; setTimeout(typeEffect,55); }
+            else { isDel=true; setTimeout(typeEffect,2400); }
+        }
+    }
+    setTimeout(()=>{ typeEl=document.getElementById("typewriterText"); if(typeEl) typeEffect(); },400);
+
+    const traderArr = [
+        { name:'MatrixPort 巨鲸', watchers:1939, pos:'long', posTxt:'正在做多', desc:'MatrixPort关联，3/17单日盈利1300万U', ratio:'376588.6:0', amount:'+$35.39M', win:'100%' },
+        { name:'做空山寨哥', watchers:357, pos:'short', posTxt:'正在做空', desc:'Meme币做空专家，100%胜率', ratio:'1.7673:1', amount:'+$5.77M', win:'61%' },
+        { name:'千万盈利波动巨鲸', watchers:261, pos:'short', posTxt:'正在做空', desc:'曾有浮动利润~ $26M+', ratio:'9.2621:1', amount:'+$8.34M', win:'33%' }
+    ];
+    function renderCards(){
+        const ctn=document.getElementById('traderCards'); if(!ctn) return;
+        ctn.innerHTML = traderArr.map(c=>`<div class="trader-card"><div class="card-header"><div class="card-name-section"><span class="card-name">${c.name}</span><span class="card-badge">热门</span></div><div class="card-status"><div><i class="fas fa-eye"></i> ${c.watchers.toLocaleString()} 人围观</div><div>${c.pos==='long'?'<i class="fas fa-arrow-up"></i>':'<i class="fas fa-arrow-down"></i>'} ${c.posTxt}</div></div><div class="card-desc"><i class="fas fa-info-circle"></i> ${c.desc}</div></div><div class="stats-grid"><div class="stat-cell"><div class="stat-label">盈亏比(90D)</div><div class="stat-value">${c.ratio}</div></div><div class="stat-cell"><div class="stat-label">收益额(90D)</div><div class="stat-value">${c.amount}</div></div><div class="stat-cell"><div class="stat-label">胜率(90D)</div><div class="stat-value">${c.win}</div></div></div><div class="card-actions"><button class="btn-subscribe">订阅</button><button class="btn-copy copy-btn" data-trader="${c.name}">立即跟单</button></div></div>`).join('');
+        document.querySelectorAll('.copy-btn').forEach(btn=>btn.addEventListener('click',(e)=>{ e.stopPropagation(); showFollowModal(btn.dataset.trader); }));
+        document.querySelectorAll('.btn-subscribe').forEach(btn=>btn.addEventListener('click',()=>showFollowModal('该策略')));
+    }
+    
+    const followModal = document.getElementById('followModal');
+    function showFollowModal(name){ followModal.classList.add('active'); }
+    function hideFollowModal(){ followModal.classList.remove('active'); }
+    document.getElementById('closeFollowModal')?.addEventListener('click', hideFollowModal);
+    document.getElementById('modalCloseBtn')?.addEventListener('click', hideFollowModal);
+    document.getElementById('modalRegBtn')?.addEventListener('click',()=>{ hideFollowModal(); document.getElementById('register').scrollIntoView({behavior:'smooth'}); });
+    followModal?.addEventListener('click',(e)=>{ if(e.target===followModal) hideFollowModal(); });
+    
+    const tutorialModal = document.getElementById('tutorialModal');
+    function showTutorialModal(){ tutorialModal.classList.add('active'); }
+    function hideTutorialModal(){ tutorialModal.classList.remove('active'); }
+    document.getElementById('closeTutorialModal')?.addEventListener('click', hideTutorialModal);
+    document.getElementById('tutorialLaterBtn')?.addEventListener('click', hideTutorialModal);
+    document.getElementById('tutorialRegisterBtn')?.addEventListener('click',()=>{ hideTutorialModal(); document.getElementById('register').scrollIntoView({behavior:'smooth'}); });
+    tutorialModal?.addEventListener('click',(e)=>{ if(e.target===tutorialModal) hideTutorialModal(); });
+    
+    const tutorialBtns = document.querySelectorAll('.tutorial-trigger');
+    tutorialBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); showTutorialModal(); }));
+
+    function updateStats(){
+        peopleCount += Math.floor(Math.random()*2)+1;
+        profitVal += (Math.random()*0.6+0.2);
+        document.getElementById('people-count').innerText = peopleCount.toLocaleString();
+        document.getElementById('profit-count').innerText = '$'+profitVal.toFixed(0)+'M';
+    }
+    function updateClock(){ document.getElementById('last-updated').innerText = new Date().toLocaleTimeString(); }
+    setInterval(updateStats, 2800);
+    setInterval(updateClock, 1000);
+    
+    const regBtn = document.getElementById('regBtn');
+    function triggerBlink(){ if(regBtn){ regBtn.classList.remove('btn-blink'); void regBtn.offsetWidth; regBtn.classList.add('btn-blink'); setTimeout(()=>regBtn.classList.remove('btn-blink'),800); } }
+    setInterval(()=>{ if(regBtn && document.body.contains(regBtn)) triggerBlink(); }, 2200);
+    regBtn?.addEventListener('click', (e)=>{ triggerBlink(); });
+    
+    document.getElementById('register')?.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const email=document.getElementById('email').value.trim(), pwd=document.getElementById('password').value, terms=document.getElementById('terms').checked, msgDiv=document.getElementById('formMsg');
+        if(!email||!pwd||!terms){ msgDiv.style.color='#FF3E2E'; msgDiv.innerText='请填写完整信息并同意协议'; return; }
+        if(pwd.length<8){ msgDiv.style.color='#FF3E2E'; msgDiv.innerText='密码至少8位'; return; }
+        msgDiv.style.color='#03A66D'; msgDiv.innerText='✓ 验证成功，跳转至注册页面...';
+        setTimeout(()=>{ window.location.href='https://www.coinw.com/register?ref=smartmoney'; },1200);
+    });
+    
+    renderCards();
+    updateClock();
+</script>
+</body>
+</html>
